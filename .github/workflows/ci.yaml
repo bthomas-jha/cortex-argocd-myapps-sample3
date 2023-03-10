@@ -16,5 +16,5 @@ jobs:
         run: docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image      
         
       - name: Log into Docker Hub Registry
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login hub.docker.com -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
         
