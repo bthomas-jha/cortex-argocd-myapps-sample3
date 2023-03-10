@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build app image
-        run: docker build ./FrontendApplication --tag image      
+        run: docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image      
