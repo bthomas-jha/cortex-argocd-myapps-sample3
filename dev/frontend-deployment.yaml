@@ -26,7 +26,7 @@ spec:
         app.kubernetes.io/name: scorecard-green
     spec:
       containers:
-        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:1.0
+        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:latest
           imagePullPolicy: Always
           name: frontend
           ports:
