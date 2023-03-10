@@ -1,0 +1,16 @@
+name: 'CI workflow'
+on:
+  push:
+    branches:
+      - main
+env:
+  IMAGE_NAME: image
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build app image
+        run: docker build ./FrontendApplication --tag image      
