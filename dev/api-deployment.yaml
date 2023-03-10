@@ -23,6 +23,7 @@ spec:
       labels:
         io.kompose.network/cortex-argocd-myapps-sample3-default: "true"
         io.kompose.service: api
+        app.kubernetes.io/name: scorecard-green
     spec:
       containers:
         - env:
