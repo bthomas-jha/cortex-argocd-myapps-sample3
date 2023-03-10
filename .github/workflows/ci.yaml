@@ -5,6 +5,7 @@ on:
       - main
 env:
   IMAGE_NAME: image
+  FILES_IMAGE_NAME: cortex-argocd-myapps-sample3-frontend
 
 jobs:
   push:
@@ -16,12 +17,12 @@ jobs:
         run: docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image      
         
       - name: Log into Docker Hub Registry
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
         
       - name: Push app image
         id: image
         run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$FILES_IMAGE_NAME
+          IMAGE_ID=${{ secrets.DOCKER_HUB_USERNAME }}/$FILES_IMAGE_NAME
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
