@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/bthomas-jha/cortex-argocd-myapps-sample3.git
     targetRevision: HEAD
-    path: .
+    path: dev
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
