@@ -42,12 +42,12 @@ jobs:
           docker push $IMAGE_ID:latest
           echo "::set-output name=version::$VERSION"        
       
-      - name: Update Image Version in the related HelmChart values.yaml
+      - name: Update Image Version in the argocd app config yaml file
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'dev/frontend-deployment.yaml'
           propertyPath: '$.spec.template.spec.containers[:1].image'
-          value: "newbeehives/cortex-argocd-myapps-sample3-frontend:latest"
+          value: "$IMAGE_ID:$VERSION"
           branch: main
           targetBranch: main
-          message: 'Update Image Version to latest'         
+          message: "Update Image Version to $VERSION"       
