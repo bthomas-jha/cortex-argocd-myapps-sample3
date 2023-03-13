@@ -40,14 +40,15 @@ jobs:
           echo "Taging the image:$IMAGE_NAME with tag $IMAGE_ID:latest"
           docker tag image $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
-          echo "::set-output name=version::$VERSION"        
+          echo "::set-output name=image_id::$IMAGE_ID"
+          echo "::set-output name=version::$VERSION"
       
       - name: Update Image Version in the argocd app config yaml file
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'dev/frontend-deployment.yaml'
           propertyPath: '$.spec.template.spec.containers[:1].image'
-          value: "$IMAGE_ID:$VERSION"
+          value: ${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}
           branch: main
           targetBranch: main
-          message: "Update Image Version to $VERSION"       
+          message: "Update Image Version to ${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}"       
