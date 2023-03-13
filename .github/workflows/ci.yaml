@@ -51,4 +51,4 @@ jobs:
           value: ${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}
           branch: main
           targetBranch: main
-          message: "Update Image Version to ${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}"       
+          message: "Update Image Version to ${{ steps.image.outputs.version }}"       
