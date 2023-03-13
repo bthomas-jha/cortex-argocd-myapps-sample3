@@ -32,6 +32,7 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
+          docker tag image $IMAGE_ID:latest
           docker push $IMAGE_ID:$VERSION
           echo "::set-output name=version::$VERSION"        
         
