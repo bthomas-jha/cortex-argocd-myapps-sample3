@@ -34,8 +34,9 @@ jobs:
           echo IMAGE_NAME=$IMAGE_NAME
           echo "Taging the image:$IMAGE_NAME with tag $IMAGE_ID:$VERSION"
           docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
           echo "Taging the image:$IMAGE_NAME with tag $IMAGE_ID:latest"
           docker tag image $IMAGE_ID:latest
-          docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:latest
           echo "::set-output name=version::$VERSION"        
         
