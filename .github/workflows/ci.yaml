@@ -56,5 +56,7 @@ jobs:
           message: "Update Image Version to ${{ steps.image.outputs.version }}"
           changes: |
             {
-              "$.spec.template.spec.containers[:1].image":"${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}"
+              "$.spec.template.spec.containers[:1].image":"${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}",
+              "spec.template.metadata.labels[io.kompose.service]":"backend"
+              
             }
