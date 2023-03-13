@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'dev/**'      
 env:
   IMAGE_NAME: image
   FILES_IMAGE_NAME: cortex-argocd-myapps-sample3-frontend
