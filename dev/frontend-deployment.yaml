@@ -23,10 +23,10 @@ spec:
       labels:
         io.kompose.network/cortex-argocd-myapps-sample3-default: 'true'
         io.kompose.service: frontend
-        app.kubernetes.io/name: Scorecard-Development
+        app.kubernetes.io/name: Scorecard-Staging
     spec:
       containers:
-        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:ff47d51e
+        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:bb9d0b30
           imagePullPolicy: Always
           name: frontend
           ports:
