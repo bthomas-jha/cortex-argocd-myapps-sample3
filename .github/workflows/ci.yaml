@@ -57,6 +57,5 @@ jobs:
           changes: |
             {
               "$.spec.template.spec.containers[:1].image":"${{ steps.image.outputs.image_id }}:${{ steps.image.outputs.version }}",
-              "$.spec.template.metadata.labels['io.kompose.service']":"frontend",
-              "$.spec.template.metadata.labels['app.kubernetes.io/name']":"backend"
+              "$.spec.template.metadata.labels['app.kubernetes.io/name']":"${{ steps.get-service-scorecard.outputs.service_scorecard }}"
             }
