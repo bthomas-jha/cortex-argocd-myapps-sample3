@@ -22,11 +22,11 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/cortex-argocd-myapps-sample3-default: 'true'
-        io.kompose.service: frontend
+        io.kompose.service: backend
         app.kubernetes.io/name: scorecard-green
     spec:
       containers:
-        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:ec0a3c4e
+        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:80d9232d
           imagePullPolicy: Always
           name: frontend
           ports:
