@@ -33,10 +33,12 @@ jobs:
           body: "Container Image updated with Githuf ref# ${{ steps.get-commit-sha.outputs.commit_sha }} on {{date:YYYY-MM-DD HH:mm:ss}}"
           message: "Update the Build time ${BUILD_TIME} on the DisplayBanner.txt"
           overwrite: 'true'
-          sync_local_file: 'false'
+          sync_local_file: 'true'
                 
       - name: Build app image
-        run: docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image --tag latest      
+        run: |
+          git pull origin main
+          docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image --tag latest      
         
       - name: Log into Docker Hub Registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
