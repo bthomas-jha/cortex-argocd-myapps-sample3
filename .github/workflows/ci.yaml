@@ -35,6 +35,10 @@ jobs:
           overwrite: 'true'
           sync_local_file: 'true'
                 
+      - name: git config user.email
+        run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: git config user.name
+        run: git config --global user.name "github-actions[bot]"
       - name: check for changes
         run: git status
       - name: stage changed files
