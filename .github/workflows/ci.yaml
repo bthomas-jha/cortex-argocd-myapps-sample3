@@ -37,7 +37,7 @@ jobs:
                 
       - name: Build app image
         run: |
-          git pull origin main
+          #git pull origin main
           docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image --tag latest      
         
       - name: Log into Docker Hub Registry
