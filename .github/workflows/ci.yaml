@@ -18,6 +18,20 @@ jobs:
       - name: Read Service-Scorecard file
         id: get-service-scorecard
         run: echo "::set-output name=service_scorecard::$(cat ./FrontendApplication/dist/Service-Scorecard.txt)"
+
+      - name: Record the Build Time
+        id: set-build-time
+        run: | 
+          echo "$(date +"%Y-%m-%d")" >> ${BUILD_TIME}
+          echo "BUILD_TIME: ${BUILD_TIME}"
+
+      - name: Modify DisplayBanner.txt
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: ./FrontendApplication/DisplayBanner.txt
+          body: "Container Image updated with Githuf ref # on {{date:YYYY-MM-DD HH:mm:ss}}"
+          message: "Update the Build time ${BUILD_TIME} on the DisplayBanner.txt"
+          overwrite: 'true'
                 
       - name: Build app image
         run: docker build ./FrontendApplication -f ./FrontendApplication/app.dockerfile --tag image --tag latest      
