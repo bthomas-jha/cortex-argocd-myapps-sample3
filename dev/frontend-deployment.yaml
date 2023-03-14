@@ -26,7 +26,7 @@ spec:
         app.kubernetes.io/name: Scorecard-Staging
     spec:
       containers:
-        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:af3e1860
+        - image: newbeehives/cortex-argocd-myapps-sample3-frontend:5fb80c9c
           imagePullPolicy: Always
           name: frontend
           ports:
