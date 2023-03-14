@@ -29,7 +29,7 @@ jobs:
       - name: Modify DisplayBanner.txt
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
-          path: ./FrontendApplication/dist/DisplayBanner.txt
+          path: FrontendApplication/dist/DisplayBanner.txt
           body: "Container Image updated with Githuf ref # on {{date:YYYY-MM-DD HH:mm:ss}}"
           message: "Update the Build time ${BUILD_TIME} on the DisplayBanner.txt"
           overwrite: 'true'
