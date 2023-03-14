@@ -19,18 +19,18 @@ jobs:
         id: get-service-scorecard
         run: echo "::set-output name=service_scorecard::$(cat ./FrontendApplication/dist/Service-Scorecard.txt)"
 
-      - name: Record the Build Time
-        id: set-build-time
+      - name: Extract the commit sha
+        id: get-commit-sha
         run: | 
-          #echo "$(date +"%Y-%m-%d")" > $BUILD_TIME
-          set BUILD_TIME="$(date +"%Y-%m-%d")"
-          echo "BUILD_TIME: $BUILD_TIME"
+          COMMIT_SHA=$(echo ${{ github.sha }} | cut -c1-8)
+          echo "COMMIT_SHA: $COMMIT_SHA"
+          echo "::set-output name=commit_sha::$COMMIT_SHA"
 
       - name: Modify DisplayBanner.txt
         uses: jaywcjlove/github-action-modify-file-content@main
         with:
           path: FrontendApplication/dist/DisplayBanner.txt
-          body: "Container Image updated with Githuf ref # on {{date:YYYY-MM-DD HH:mm:ss}}"
+          body: "Container Image updated with Githuf ref # ${{ steps.get-commit-sha.outputs.commit_sha }} on {{date:YYYY-MM-DD HH:mm:ss}}"
           message: "Update the Build time ${BUILD_TIME} on the DisplayBanner.txt"
           overwrite: 'true'
                 
