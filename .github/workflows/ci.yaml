@@ -22,7 +22,8 @@ jobs:
       - name: Record the Build Time
         id: set-build-time
         run: | 
-          echo "$(date +"%Y-%m-%d")" > $BUILD_TIME
+          #echo "$(date +"%Y-%m-%d")" > $BUILD_TIME
+          $BUILD_TIME="$(date +"%Y-%m-%d")"
           echo "BUILD_TIME: $BUILD_TIME"
 
       - name: Modify DisplayBanner.txt
